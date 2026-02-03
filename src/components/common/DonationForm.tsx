@@ -6,6 +6,8 @@ import { vietqrService } from "@/services/vietqr";
 import { useDonationStore } from "@/store/donation";
 import { type DonationFormData, donationFormSchema } from "@/utils/validation";
 
+const defaultQRCode =
+	"https://img.vietqr.io/image/TCB-1234200999-compact2.png?amount=50000&addInfo=M%E1%BA%A1nh%20th%C6%B0%E1%BB%9Dng%20qu%C3%A2n%20donate%20for%20nuoi%20em%20Tin&accountName=NUOI%20TOI";
 export const DonationForm: React.FC<{
 	banks: { id: string; name: string; code: string }[];
 }> = ({ banks }) => {
@@ -64,31 +66,11 @@ export const DonationForm: React.FC<{
 		}
 	};
 
-	const handleCopyLink = async () => {
-		const bankCode = register("bankCode").name;
-		const accountNumber = register("accountNumber").name;
-
-		if (!bankCode || !accountNumber) return;
-
-		const link = vietqrService.getPaymentLink({
-			bankCode,
-			accountNumber,
-			amount: watchAmount || 50000,
-		});
-
-		try {
-			await navigator.clipboard.writeText(link);
-			alert(t("donation.copied"));
-		} catch {
-			console.error("Failed to copy");
-		}
-	};
-
 	return (
 		<div className="rounded-lg border border-gray-200 bg-white p-8">
-			<div className="grid gap-8 md:grid-cols-2">
+			<div className="grid gap-8 md:grid-cols-3">
 				{/* Form */}
-				<div>
+				<div className="md:col-span-1">
 					<h3 className="mb-6 text-2xl font-bold text-gray-800">
 						{t("donation.bankTitle")}
 					</h3>
@@ -154,6 +136,24 @@ export const DonationForm: React.FC<{
 							)}
 						</div>
 
+						{/* Account Number */}
+						<div>
+							<label
+								htmlFor="accountName"
+								className="block text-sm font-medium text-gray-700"
+							>
+								Account Name
+							</label>
+							<input
+								id="accountName"
+								type="text"
+								placeholder="PHAM VAN TIN"
+								disabled
+								readOnly
+								className={`mt-1 w-full rounded-lg border px-4 py-2 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-1 bg-gray-100 cursor-not-allowed ${"border-gray-300 focus:border-green-500 focus:ring-green-500"}`}
+							/>
+						</div>
+
 						{/* Your Name */}
 						<div>
 							<label
@@ -215,42 +215,28 @@ export const DonationForm: React.FC<{
 							<button
 								type="submit"
 								disabled={isGeneratingQR}
-								className="flex-1 rounded-lg bg-green-600 px-4 py-2 font-semibold text-white transition-colors hover:bg-green-700 disabled:bg-gray-400"
+								className="flex-1 rounded-lg w-full bg-green-600 px-4 py-2 font-semibold text-white transition-colors hover:bg-green-700 disabled:bg-gray-400"
 							>
 								{isGeneratingQR
 									? t("donation.generating")
 									: t("donation.generateQr")}
-							</button>
-							<button
-								type="button"
-								onClick={handleCopyLink}
-								className="flex-1 rounded-lg border border-green-600 px-4 py-2 font-semibold text-green-600 transition-colors hover:bg-green-50"
-							>
-								{t("donation.copyLink")}
 							</button>
 						</div>
 					</form>
 				</div>
 
 				{/* QR Code Display */}
-				<div className="flex flex-col items-center justify-center">
-					{qrCode ? (
-						<div className="rounded-lg border-2 border-green-200 bg-green-50 p-6">
-							<img
-								src={qrCode}
-								alt="Payment QR Code"
-								className="h-48 w-48 rounded-lg"
-							/>
-							<p className="mt-4 text-center text-sm text-gray-600">
-								{t("donation.autoEmail")}
-							</p>
-						</div>
-					) : (
-						<div className="rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-12 text-center">
-							<div className="text-4xl">📱</div>
-							<p className="mt-4 text-gray-600">{t("donation.subtitle")}</p>
-						</div>
-					)}
+				<div className="flex flex-col items-center justify-center md:col-span-2">
+					<div className="w-full max-w-lg rounded-lg border-2 border-green-200 bg-green-50 p-8">
+						<img
+							src={qrCode || defaultQRCode}
+							alt="Payment QR Code"
+							className="h-auto w-full rounded-lg shadow-lg"
+						/>
+						<p className="mt-6 text-center text-sm text-gray-600">
+							{t("donation.autoEmail")}
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>

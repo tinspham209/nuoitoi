@@ -60,10 +60,12 @@ registerRoute(
 	}),
 );
 
-// Cache VietQR API responses with NetworkFirst strategy
+// Cache VietQR API and Image responses with NetworkFirst strategy
 // Falls back to cache if network is unavailable
 registerRoute(
-	({ url }: { url: URL }) => url.origin === "https://api.vietqr.io",
+	({ url }: { url: URL }) =>
+		url.origin === "https://api.vietqr.io" ||
+		url.origin === "https://img.vietqr.io",
 	new NetworkFirst({
 		cacheName: "vietqr-api",
 		plugins: [

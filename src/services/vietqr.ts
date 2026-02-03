@@ -5,10 +5,13 @@ import type {
 } from "@/types/index";
 
 // VietQR API v1 implementation
-// Documentation: https://api.vietqr.io/
+// Documentation: https://www.vietqr.io/en/danh-sach-api/link-tao-ma-nhanh/
 
 const API_BASE_URL =
 	import.meta.env.VITE_VIETQR_API_URL || "https://api.vietqr.io/v1";
+
+// VietQR Quick Link Image URL base
+const VIETQR_IMG_URL = "https://img.vietqr.io/image";
 
 interface VietQRBank {
 	id: number;
@@ -47,37 +50,32 @@ class VietQRService {
 	}
 
 	/**
-	 * Generate QR code for bank transfer
-	 * Uses VietQR's generate endpoint to create payment QR codes
+	 * Generate QR code for bank transfer using VietQR Quick Link
+	 * Format: https://img.vietqr.io/image/<BANK_ID>-<ACCOUNT_NO>-<TEMPLATE>.png?amount=<AMOUNT>&addInfo=<DESCRIPTION>&accountName=<ACCOUNT_NAME>
+	 * Documentation: https://www.vietqr.io/en/danh-sach-api/link-tao-ma-nhanh/
 	 */
 	async generateQR(request: QRGenerateRequest): Promise<QRGenerateResponse> {
 		try {
-			// VietQR API v1 endpoint for generating QR codes
-			const queryParams = new URLSearchParams({
-				bankBin: request.bankCode || "TCB",
-				accountNumber: request.accountNumber || "1234200999",
-				amount: request.amount.toString(),
-				accountName: request.accountName || "1234200999",
-				description: request.description || "Nuoi Toi Donation",
-			});
+			const bankCode = request.bankCode || "TCB";
+			const accountNumber = request.accountNumber || "1234200999";
+			const amount = request.amount;
+			const description = request.description || "Nuoi Toi Donation";
+			const accountName = request.accountName || "NUOI TOI";
+			const template = "compact2"; // compact2 = 540x640 with QR + logos + info
 
-			const url = `${API_BASE_URL}/generate?${queryParams.toString()}`;
+			// Encode URL parameters
+			const addInfo = encodeURIComponent(description);
+			const encodedAccountName = encodeURIComponent(accountName);
 
-			const response = await fetch(url);
-			if (!response.ok) {
-				throw new Error(`Failed to generate QR: ${response.statusText}`);
-			}
+			// Build VietQR Quick Link URL
+			// Format: https://img.vietqr.io/image/<BANK_ID>-<ACCOUNT_NO>-<TEMPLATE>.png
+			const qrImageUrl = `${VIETQR_IMG_URL}/${bankCode}-${accountNumber}-${template}.png?amount=${amount}&addInfo=${addInfo}&accountName=${encodedAccountName}`;
 
-			const data = await response.json();
-
-			if (data.code === "00" && data.data?.qrDataURL) {
-				return {
-					qrCode: data.data.qrDataURL,
-					url: url,
-				};
-			} else {
-				throw new Error(data.message || "Failed to generate QR code");
-			}
+			// Return the image URL directly as the QR code
+			return {
+				qrCode: qrImageUrl,
+				url: qrImageUrl,
+			};
 		} catch (error) {
 			console.error("Error generating QR:", error);
 			return {
@@ -114,19 +112,21 @@ class VietQRService {
 	}
 
 	/**
-	 * Get payment link for bank transfer
-	 * Useful for deep linking to banking apps
+	 * Get payment link for bank transfer using VietQR Quick Link
+	 * Returns direct image URL that can be opened in browser or shared
 	 */
 	getPaymentLink(request: QRGenerateRequest): string {
-		const params = new URLSearchParams({
-			bankBin: request.bankCode,
-			accountNumber: request.accountNumber,
-			amount: request.amount.toString(),
-			accountName: request.accountName || "NUOI TOI",
-			description: request.description || "Nuoi Toi Donation",
-		});
+		const bankCode = request.bankCode || "TCB";
+		const accountNumber = request.accountNumber || "1234200999";
+		const amount = request.amount;
+		const description = request.description || "Nuoi Toi Donation";
+		const accountName = request.accountName || "NUOI TOI";
+		const template = "compact2";
 
-		return `${API_BASE_URL}/generate?${params.toString()}`;
+		const addInfo = encodeURIComponent(description);
+		const encodedAccountName = encodeURIComponent(accountName);
+
+		return `${VIETQR_IMG_URL}/${bankCode}-${accountNumber}-${template}.png?amount=${amount}&addInfo=${addInfo}&accountName=${encodedAccountName}`;
 	}
 }
 

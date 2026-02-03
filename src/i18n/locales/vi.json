@@ -1,0 +1,106 @@
+{
+	"common": {
+		"title": "🌱 NUÔI TÔI 🌱",
+		"language": "Tiếng Việt",
+		"donate": "Chuyển Tiền Ngay",
+		"close": "Đóng",
+		"total": "Tổng Cộng",
+		"month": "Tháng",
+		"received": "Thu Vào",
+		"spent": "Chi Ra",
+		"remaining": "Còn Lại"
+	},
+	"hero": {
+		"title": "🌱 NUÔI TÔI 🌱",
+		"subtitle": "Hỗ trợ tôi sống minh bạch, rõ ràng!",
+		"description": "Tôi hứa sao kê đầy đủ! Mỗi giao dịch đều được ghi chép chi tiết!"
+	},
+	"reasons": {
+		"title": "🎯 Tại Sao Nên Nuôi Tôi?",
+		"realtime": {
+			"title": "📊 Sao Kê Realtime",
+			"description": "Cập nhật từng giây! Còn nhanh hơn cả tốc độ bạn chuyển tiền!"
+		},
+		"transparent": {
+			"title": "💸 Minh Bạch 300%",
+			"description": "Hơn cả 100%! Tôi còn báo cáo cả việc mua ly trà sữa!"
+		},
+		"rational": {
+			"title": "🏦 Chi Tiêu Hợp Lý",
+			"description": "Không mua xe hơi, nhà cửa. Chỉ ăn cơm với mì tôm thôi!"
+		},
+		"tracking": {
+			"title": "📱 Theo Dõi 24/7",
+			"description": "Theo dõi 24/7 tôi ăn gì, uống gì, đi đâu. Như \"Big Brother\" vậy!"
+		}
+	},
+	"commitments": {
+		"title": "🎪 Cam Kết Vàng Của Tôi:",
+		"daily": "✓ Sao kê mỗi ngày: Cập nhật lúc 6h sáng, đều như vắt tranh! (Kể cả Chủ Nhật & Lễ)",
+		"honest": "✓ Không giấu giếm: Từ tô phở 50k đến hộp sữa chua 8k đều được ghi chép tỉ mỉ!",
+		"receipt": "✓ Có hóa đơn chứng từ: Chụp hình bill, quét mã vạch, lưu biên lai đầy đủ!",
+		"unboxing": "✓ Video unboxing: Mở từng gói mì tôm live trên Facebook cho anh chị xem!",
+		"hotline": "✓ Hotline 24/7: Gọi hỏi tôi ăn gì bất cứ lúc nào, kể cả 3h sáng!",
+		"noblock": "✓ Không block: Hỏi khó đến mấy cũng trả lời, không \"đã xem\" rồi im lặng!"
+	},
+	"comparison": {
+		"title": "💰 So Sánh Với \"Người Khác\"",
+		"others": "❌ Người Khác:",
+		"othersStatement": "✓ Sao kê sau 3 năm (hoặc không bao giờ)",
+		"othersExcel": "✓ File Excel blur mờ như ảnh ma",
+		"othersMath": "✓ Số liệu \"làm tròn\" theo kiểu 1 + 1 = 3",
+		"othersBlock": "✓ Block người hỏi nhanh như chớp",
+		"me": "✅ Nuôi Tôi:",
+		"myStatement": "✓ Sao kê trước khi tiêu (để anh chị duyệt)",
+		"myExcel": "✓ File Excel 4K Ultra HD, có chữ ký điện tử",
+		"myMath": "✓ Số liệu chính xác đến từng đồng",
+		"myReply": "✓ Trả lời inbox nhanh hơn cả chatbot"
+	},
+	"donation": {
+		"title": "💳 CHUYỂN TIỀN NGAY ĐI!",
+		"subtitle": "Quét mã QR hoặc điền form dưới đây",
+		"bankTitle": "Chuyển Khoản Ngân Hàng",
+		"bankPlaceholder": "Chọn ngân hàng",
+		"accountNumber": "Số Tài Khoản",
+		"yourName": "Tên Của Bạn",
+		"yourNamePlaceholder": "Nhập tên của bạn",
+		"amount": "Số Tiền (VND)",
+		"generateQr": "Tạo Mã QR",
+		"generating": "Đang tạo...",
+		"copyLink": "Sao Chép Link",
+		"copied": "Đã sao chép!",
+		"autoEmail": "⚡ Tự động gửi mail sau khi chuyển tiền! ⚡"
+	},
+	"spending": {
+		"title": "📈 Tôi Sẽ Dùng Tiền Vào Đâu?",
+		"food": "✓ 40% - Ăn uống (Cơm, mì tôm, trứng, rau. KHÔNG có tôm hùm!)",
+		"utilities": "✓ 20% - Điện nước internet (Để sao kê cho anh chị)",
+		"rent": "✓ 15% - Thuê nhà (Phòng trọ 15m², không phải penthouse)",
+		"health": "✓ 10% - Y tế (Thuốc cảm, vitamin C, khẩu trang)",
+		"education": "✓ 10% - Học tập nâng cao (Sách, khóa học online để sao kê tốt hơn)",
+		"entertainment": "✓ 5% - Giải trí (Netflix? Không! Chỉ Youtube miễn phí thôi!)",
+		"detailedChart": "📊 Biểu đồ chi tiết cập nhật hàng tuần trên website!"
+	},
+	"stats": {
+		"title": "💯 Thống Kê Donate",
+		"totalReceived": "Tổng Nhận",
+		"dongSymbol": "đ",
+		"totalDonations": "Số Lần Donate",
+		"monthlyGoal": "Mục Tiêu Tháng Này",
+		"expenses": "Chi Tiêu Của Tôi",
+		"viewFullStatement": "Xem Sao Kê Đầy Đủ"
+	},
+	"message": {
+		"title": "🎤 Lời Nhắn Từ Trái Tim",
+		"content": "Trong thời đại mà \"từ thiện\" đã trở thành từ nhạy cảm, Tôi xin khẳng định: HÃY NUÔI TÔI!\nTôi nghèo, tôi cần tiền, nhưng tôi KHÔNG MẤT LƯƠNG TÂM! Mỗi đồng tiền các bạn gửi, tôi sẽ chi tiêu rõ ràng, minh bạch như bụng đói của tôi vậy!",
+		"ps": "P/S: Tôi hứa sẽ không mua xe hơi bằng tiền donate. Vì... tôi chưa có bằng lái! 🚗❌"
+	},
+	"disclaimer": {
+		"title": "⚠️ DISCLAIMER",
+		"content": "Đây là trang web mang tính chất HÀI HƯỚC. Mọi nội dung đều mang tính giải trí, không nhằm mục đích xúc phạm hay chỉ trích bất kỳ cá nhân/tổ chức nào."
+	},
+	"footer": {
+		"copyright": "© 2024 Nuôi Tôi. Made with ❤️",
+		"language": "Ngôn Ngữ"
+	}
+}

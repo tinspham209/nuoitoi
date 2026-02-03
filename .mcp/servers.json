@@ -1,0 +1,11 @@
+{
+	"mcpServers": {
+		"playwright": {
+			"command": "node",
+			"args": ["--experimental-modules", "node_modules/@modelcontextprotocol/server-playwright/dist/index.js"],
+			"env": {
+				"PLAYWRIGHT_BROWSER": "chromium"
+			}
+		}
+	}
+}

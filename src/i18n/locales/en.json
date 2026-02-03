@@ -1,0 +1,106 @@
+{
+	"common": {
+		"title": "🌱 NURTURE ME 🌱",
+		"language": "English",
+		"donate": "Donate Now",
+		"close": "Close",
+		"total": "Total",
+		"month": "Month",
+		"received": "Received",
+		"spent": "Spent",
+		"remaining": "Remaining"
+	},
+	"hero": {
+		"title": "🌱 NURTURE ME 🌱",
+		"subtitle": "Support my transparent living journey!",
+		"description": "I promise full accountability! Every single transaction is recorded and shared!"
+	},
+	"reasons": {
+		"title": "🎯 Why Support Me?",
+		"realtime": {
+			"title": "📊 Realtime Statement",
+			"description": "Updated every second! Faster than your money transfer!"
+		},
+		"transparent": {
+			"title": "💸 300% Transparency",
+			"description": "More than 100%! I even report my bubble tea purchases!"
+		},
+		"rational": {
+			"title": "🏦 Rational Spending",
+			"description": "No cars, no houses. Just rice and ramen!"
+		},
+		"tracking": {
+			"title": "📱 24/7 Tracking",
+			"description": "Follow my every move - what I eat, where I go. Like Big Brother!"
+		}
+	},
+	"commitments": {
+		"title": "🎪 My Golden Promises:",
+		"daily": "✓ Daily statement: Updated at 6 AM sharp, even on Sundays & holidays!",
+		"honest": "✓ No hiding: Everything from 50k pho to 8k yogurt is recorded in detail!",
+		"receipt": "✓ Full receipts: Photos, QR codes, complete documentation!",
+		"unboxing": "✓ Live unboxing: I'll stream opening every noodle package on Facebook!",
+		"hotline": "✓ 24/7 Hotline: Ask me anything anytime, even at 3 AM!",
+		"noblock": "✓ Never ignore: I'll answer every question, no matter how tough!"
+	},
+	"comparison": {
+		"title": "💰 Compare With 'Others'",
+		"others": "❌ Others:",
+		"othersStatement": "✓ Statement after 3 years (or never)",
+		"othersExcel": "✓ Blurry Excel files like ghost images",
+		"othersMath": "✓ Rounded numbers where 1 + 1 = 3",
+		"othersBlock": "✓ Block inquiries faster than lightning",
+		"me": "✅ Me:",
+		"myStatement": "✓ Statement before spending (for your approval)",
+		"myExcel": "✓ Crystal clear 4K Ultra HD Excel with digital signature",
+		"myMath": "✓ Exact numbers down to each dong",
+		"myReply": "✓ Faster responses than chatbots!"
+	},
+	"donation": {
+		"title": "💳 Donate Now!",
+		"subtitle": "Scan the QR or use the form below",
+		"bankTitle": "Vietnam Bank Transfer",
+		"bankPlaceholder": "Select your bank",
+		"accountNumber": "Account Number",
+		"yourName": "Your Name",
+		"yourNamePlaceholder": "Enter your name",
+		"amount": "Amount (VND)",
+		"generateQr": "Generate QR Code",
+		"generating": "Generating...",
+		"copyLink": "Copy Payment Link",
+		"copied": "Copied!",
+		"autoEmail": "⚡ Automatic email after transfer! ⚡"
+	},
+	"spending": {
+		"title": "📈 How I'll Spend Your Donation",
+		"food": "✓ 40% - Food (Rice, ramen, eggs, veggies. NO lobster!)",
+		"utilities": "✓ 20% - Utilities (Electricity, water, internet for statements)",
+		"rent": "✓ 15% - Rent (15m² room, not a penthouse)",
+		"health": "✓ 10% - Health (Cold medicine, vitamin C, masks)",
+		"education": "✓ 10% - Education (Books, courses to improve statements)",
+		"entertainment": "✓ 5% - Entertainment (Free YouTube only!)",
+		"detailedChart": "📊 Detailed chart updated weekly on website!"
+	},
+	"stats": {
+		"title": "💯 Donation Statistics",
+		"totalReceived": "Total Received",
+		"dongSymbol": "đ",
+		"totalDonations": "Total Donations",
+		"monthlyGoal": "Monthly Goal",
+		"expenses": "My Expenses",
+		"viewFullStatement": "View Full Statement"
+	},
+	"message": {
+		"title": "🎤 A Message From My Heart",
+		"content": "In an era where 'charity' has become a sensitive word, I declare: SUPPORT ME!\nI'm poor, I need money, but I'm NOT SHAMELESS!\nEvery dong you send, I will spend clearly and transparently like my hungry belly!",
+		"ps": "P/S: I promise not to buy a car with donation money. Because... I don't have a license! 🚗❌"
+	},
+	"disclaimer": {
+		"title": "⚠️ DISCLAIMER",
+		"content": "This is a humorous website. All content is for entertainment purposes only and is not intended to offend or criticize any individual or organization."
+	},
+	"footer": {
+		"copyright": "© 2024 Nurture Me. Made with ❤️",
+		"language": "Language"
+	}
+}

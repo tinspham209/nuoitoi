@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://nuoitoi.tinspham.dev
+
+# Sitemaps
+Sitemap: https://nuoitoi.tinspham.dev/sitemap.xml

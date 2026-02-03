@@ -1,0 +1,23 @@
+{
+	"name": "Nuôi Tôi - Transparent Donation",
+	"short_name": "Nuôi Tôi",
+	"description": "Ủng hộ tôi sống minh bạch 100%! Sao kê realtime, chi tiêu rõ ràng với VietQR.",
+	"start_url": "/",
+	"display": "standalone",
+	"theme_color": "#16a34a",
+	"background_color": "#ffffff",
+	"orientation": "portrait-primary",
+	"lang": "vi",
+	"dir": "ltr",
+	"categories": ["finance", "utilities"],
+	"icons": [
+		{
+			"src": "/favicon.ico",
+			"sizes": "32x32",
+			"type": "image/x-icon"
+		}
+	],
+	"screenshots": [],
+	"related_applications": [],
+	"prefer_related_applications": false
+}

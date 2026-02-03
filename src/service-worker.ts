@@ -34,6 +34,11 @@ function shouldCacheResponse(
 		return { cache: CACHE_NAMES.IMAGES, strategy: "cache" };
 	}
 
+	// VietQR image responses (fetch() may not set destination)
+	if (url.origin === "https://img.vietqr.io" && url.pathname.startsWith("/image/")) {
+		return { cache: CACHE_NAMES.IMAGES, strategy: "cache" };
+	}
+
 	// Static resources (CSS, JS)
 	if (
 		request.destination === "style" ||
@@ -165,6 +170,11 @@ async function cacheFirst(
 
 		// Skip non-GET requests
 		if (request.method !== "GET") {
+			return;
+		}
+
+		// Skip unsupported schemes (e.g., chrome-extension, data, file)
+		if (url.protocol !== "http:" && url.protocol !== "https:") {
 			return;
 		}
 

@@ -17,9 +17,7 @@ export const DonationForm: React.FC<{
 	const isGeneratingQR = useDonationStore((state) => state.isGeneratingQR);
 
 	const setQRCode = useDonationStore((state) => state.setQRCode);
-	const setIsGeneratingQR = useDonationStore(
-		(state) => state.setIsGeneratingQR,
-	);
+	const setIsGeneratingQR = useDonationStore((state) => state.setIsGeneratingQR);
 	const setQRError = useDonationStore((state) => state.setQRError);
 
 	const {
@@ -102,9 +100,7 @@ export const DonationForm: React.FC<{
 								))}
 							</select>
 							{errors.bankCode && (
-								<p className="mt-1 text-sm text-red-500">
-									{errors.bankCode.message}
-								</p>
+								<p className="mt-1 text-sm text-red-500">{errors.bankCode.message}</p>
 							)}
 						</div>
 
@@ -174,9 +170,7 @@ export const DonationForm: React.FC<{
 								}`}
 							/>
 							{errors.yourName && (
-								<p className="mt-1 text-sm text-red-500">
-									{errors.yourName.message}
-								</p>
+								<p className="mt-1 text-sm text-red-500">{errors.yourName.message}</p>
 							)}
 						</div>
 
@@ -204,9 +198,7 @@ export const DonationForm: React.FC<{
 								/>
 							</div>
 							{errors.amount && (
-								<p className="mt-1 text-sm text-red-500">
-									{errors.amount.message}
-								</p>
+								<p className="mt-1 text-sm text-red-500">{errors.amount.message}</p>
 							)}
 						</div>
 
@@ -217,9 +209,7 @@ export const DonationForm: React.FC<{
 								disabled={isGeneratingQR}
 								className="flex-1 rounded-lg w-full bg-green-600 px-4 py-2 font-semibold text-white transition-colors hover:bg-green-700 disabled:bg-gray-400"
 							>
-								{isGeneratingQR
-									? t("donation.generating")
-									: t("donation.generateQr")}
+								{isGeneratingQR ? t("donation.generating") : t("donation.generateQr")}
 							</button>
 						</div>
 					</form>

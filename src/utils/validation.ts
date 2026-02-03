@@ -1,10 +1,7 @@
 import * as yup from "yup";
 
 export const donationFormSchema = yup.object({
-	bankCode: yup
-		.string()
-		.required("Bank is required")
-		.min(1, "Please select a bank"),
+	bankCode: yup.string().required("Bank is required").min(1, "Please select a bank"),
 	accountNumber: yup
 		.string()
 		.required("Account number is required")

@@ -36,10 +36,7 @@ try {
 		.replace(/\{ url: URL \}/g, "{ url }") // Simplify destructuring
 		.replace(/\{ request: Request \}/g, "{ request }")
 		.replace(/Array<PrecacheEntry \| string>/g, "Array")
-		.replace(
-			/ServiceWorkerGlobalScope & \{[^}]+\}/g,
-			"ServiceWorkerGlobalScope",
-		);
+		.replace(/ServiceWorkerGlobalScope & \{[^}]+\}/g, "ServiceWorkerGlobalScope");
 
 	// Write the JS service worker
 	writeFileSync(swDestPath, jsContent, "utf-8");

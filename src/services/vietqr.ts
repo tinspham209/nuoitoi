@@ -1,14 +1,9 @@
-import type {
-	Bank,
-	QRGenerateRequest,
-	QRGenerateResponse,
-} from "@/types/index";
+import type { Bank, QRGenerateRequest, QRGenerateResponse } from "@/types/index";
 
 // VietQR API v1 implementation
 // Documentation: https://www.vietqr.io/en/danh-sach-api/link-tao-ma-nhanh/
 
-const API_BASE_URL =
-	import.meta.env.VITE_VIETQR_API_URL || "https://api.vietqr.io/v1";
+const API_BASE_URL = import.meta.env.VITE_VIETQR_API_URL || "https://api.vietqr.io/v1";
 
 // VietQR Quick Link Image URL base
 const VIETQR_IMG_URL = "https://img.vietqr.io/image";
@@ -89,9 +84,7 @@ class VietQRService {
 	 * Alternative: Generate QR code using common bank info
 	 * Fallback method if VietQR API is unavailable
 	 */
-	async generateQRFallback(
-		request: QRGenerateRequest,
-	): Promise<QRGenerateResponse> {
+	async generateQRFallback(request: QRGenerateRequest): Promise<QRGenerateResponse> {
 		try {
 			// Build QR string manually for bank transfers
 			// Format: |paymentType|recipientName|bankAccountNumber|amount|description|

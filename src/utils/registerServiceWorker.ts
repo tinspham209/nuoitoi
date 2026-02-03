@@ -20,11 +20,7 @@ export const registerServiceWorker = () => {
 		if (event.isUpdate) {
 			console.log("New service worker installed, update available!");
 			// Show update notification to user
-			if (
-				confirm(
-					"New version available! Click OK to update and reload the page.",
-				)
-			) {
+			if (confirm("New version available! Click OK to update and reload the page.")) {
 				wb.addEventListener("controlling", () => {
 					window.location.reload();
 				});

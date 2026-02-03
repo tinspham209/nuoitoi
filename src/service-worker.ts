@@ -4,11 +4,7 @@ import { clientsClaim } from "workbox-core";
 import { ExpirationPlugin } from "workbox-expiration";
 import { type PrecacheEntry, precacheAndRoute } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
-import {
-	CacheFirst,
-	NetworkFirst,
-	StaleWhileRevalidate,
-} from "workbox-strategies";
+import { CacheFirst, NetworkFirst, StaleWhileRevalidate } from "workbox-strategies";
 
 declare const self: ServiceWorkerGlobalScope & {
 	__WB_MANIFEST: Array<PrecacheEntry | string>;
@@ -64,8 +60,7 @@ registerRoute(
 // Falls back to cache if network is unavailable
 registerRoute(
 	({ url }: { url: URL }) =>
-		url.origin === "https://api.vietqr.io" ||
-		url.origin === "https://img.vietqr.io",
+		url.origin === "https://api.vietqr.io" || url.origin === "https://img.vietqr.io",
 	new NetworkFirst({
 		cacheName: "vietqr-api",
 		plugins: [

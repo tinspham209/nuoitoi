@@ -1,8 +1,6 @@
 export default {
 	globDirectory: "dist/",
-	globPatterns: [
-		"**/*.{html,js,css,png,jpg,jpeg,gif,svg,webp,woff,woff2,ttf,ico}",
-	],
+	globPatterns: ["**/*.{html,js,css,png,jpg,jpeg,gif,svg,webp,woff,woff2,ttf,ico}"],
 	swDest: "dist/service-worker.js",
 	swSrc: "dist/service-worker-template.js",
 	maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB

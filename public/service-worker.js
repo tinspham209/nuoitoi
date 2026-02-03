@@ -17,6 +17,4 @@ self.addEventListener("fetch", (event) => {
 	event.respondWith(fetch(event.request));
 });
 
-console.log(
-	"[Dev SW] Development Service Worker loaded - No caching in dev mode",
-);
+console.log("[Dev SW] Development Service Worker loaded - No caching in dev mode");

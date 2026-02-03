@@ -18,7 +18,6 @@ export const Home: React.FC = () => {
 		const loadBanks = async () => {
 			try {
 				const bankList = await vietqrService.getBanks();
-				console.log("bankList: ", bankList);
 				setBanks(bankList);
 			} catch (error) {
 				console.error("Failed to load banks:", error);
@@ -126,7 +125,10 @@ export const Home: React.FC = () => {
 							{ key: "education", icon: "📚" },
 							{ key: "entertainment", icon: "🎬" },
 						].map(({ key, icon }) => (
-							<div key={key} className="rounded-lg border border-gray-200 bg-white p-6">
+							<div
+								key={key}
+								className="rounded-lg border border-gray-200 bg-white p-6"
+							>
 								<div className="mb-2 text-3xl">{icon}</div>
 								<p className="text-gray-700">{t(`spending.${key}`)}</p>
 							</div>
@@ -174,7 +176,11 @@ export const Home: React.FC = () => {
 							@tinspham.dev
 						</a>
 						|
-						<a href="https://tinspham.dev/cv.pdf" target="_blank" rel="noopener">
+						<a
+							href="https://tinspham.dev/cv.pdf"
+							target="_blank"
+							rel="noopener"
+						>
 							View my CV
 						</a>
 					</div>

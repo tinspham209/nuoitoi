@@ -54,8 +54,8 @@ class VietQRService {
 			const bankCode = request.bankCode || "TCB";
 			const accountNumber = request.accountNumber || "1234200999";
 			const amount = request.amount;
-			const description = request.description || "Nuoi Toi Donation";
-			const accountName = request.accountName || "NUOI TOI";
+			const description = request.description || "Nuoi Tin Donation";
+			const accountName = request.accountName || "PHAM VAN TIN";
 			const template = "compact2"; // compact2 = 540x640 with QR + logos + info
 
 			// Encode URL parameters
@@ -88,7 +88,7 @@ class VietQRService {
 		try {
 			// Build QR string manually for bank transfers
 			// Format: |paymentType|recipientName|bankAccountNumber|amount|description|
-			const qrString = `|1|${request.accountName || "NUOI TOI"}|${request.accountNumber}|${request.amount}|${request.description || "Donation"}|`;
+			const qrString = `|1|${request.accountName || "PHAM VAN TIN"}|${request.accountNumber}|${request.amount}|${request.description || "Donation"}|`;
 
 			// In a real implementation, you would generate QR code image
 			// For now, return the data as-is
@@ -112,8 +112,8 @@ class VietQRService {
 		const bankCode = request.bankCode || "TCB";
 		const accountNumber = request.accountNumber || "1234200999";
 		const amount = request.amount;
-		const description = request.description || "Nuoi Toi Donation";
-		const accountName = request.accountName || "NUOI TOI";
+		const description = request.description || "Nuoi Tin Donation";
+		const accountName = request.accountName || "PHAM VAN TIN";
 		const template = "compact2";
 
 		const addInfo = encodeURIComponent(description);

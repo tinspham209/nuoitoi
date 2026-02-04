@@ -1,5 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import type React from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { vietqrService } from "@/services/vietqr";
@@ -7,7 +8,7 @@ import { useDonationStore } from "@/store/donation";
 import { type DonationFormData, donationFormSchema } from "@/utils/validation";
 
 const defaultQRCode =
-	"https://img.vietqr.io/image/TCB-1234200999-compact2.png?amount=50000&addInfo=M%E1%BA%A1nh%20th%C6%B0%E1%BB%9Dng%20qu%C3%A2n%20donate%20for%20nuoi%20em%20Tin&accountName=NUOI%20TOI";
+	"https://img.vietqr.io/image/TCB-1234200999-compact2.png?amount=50000&addInfo=M%E1%BA%A1nh%20th%C6%B0%E1%BB%9Dng%20qu%C3%A2n%20donate%20for%20nuoi%20em%20Tin&accountName=PHAM%20VAN%20TIN";
 export const DonationForm: React.FC<{
 	banks: { id: string; name: string; code: string }[];
 }> = ({ banks }) => {
@@ -17,7 +18,9 @@ export const DonationForm: React.FC<{
 	const isGeneratingQR = useDonationStore((state) => state.isGeneratingQR);
 
 	const setQRCode = useDonationStore((state) => state.setQRCode);
-	const setIsGeneratingQR = useDonationStore((state) => state.setIsGeneratingQR);
+	const setIsGeneratingQR = useDonationStore(
+		(state) => state.setIsGeneratingQR,
+	);
 	const setQRError = useDonationStore((state) => state.setQRError);
 
 	const {
@@ -25,6 +28,7 @@ export const DonationForm: React.FC<{
 		handleSubmit,
 		formState: { errors },
 		watch,
+		reset,
 	} = useForm<DonationFormData>({
 		resolver: yupResolver(donationFormSchema),
 		defaultValues: {
@@ -36,6 +40,46 @@ export const DonationForm: React.FC<{
 	});
 
 	const watchAmount = watch("amount");
+
+	// Handle query param on mount
+	useEffect(() => {
+		const urlParams = new URLSearchParams(window.location.search);
+		const amountParam = urlParams.get("amount");
+
+		if (amountParam) {
+			const parsedAmount = Number.parseFloat(amountParam);
+			if (!Number.isNaN(parsedAmount) && parsedAmount >= 1000) {
+				const formData = {
+					bankCode: "TCB",
+					accountNumber: "1234200999",
+					yourName: "Mạnh thường quân",
+					amount: parsedAmount,
+				};
+
+				// Update form with new amount
+				reset(formData);
+
+				// Scroll to donation section
+				const donationElement = document.getElementById("donation");
+				if (donationElement) {
+					donationElement.scrollIntoView({
+						behavior: "smooth",
+						block: "start",
+					});
+				}
+
+				// Auto-generate QR code
+				onSubmit(formData);
+
+				// Remove query param from URL
+				urlParams.delete("amount");
+				const newUrl = urlParams.toString()
+					? `${window.location.pathname}?${urlParams.toString()}`
+					: window.location.pathname;
+				window.history.replaceState({}, "", newUrl);
+			}
+		}
+	}, [reset]);
 
 	const onSubmit = async (data: DonationFormData) => {
 		setIsGeneratingQR(true);
@@ -65,7 +109,10 @@ export const DonationForm: React.FC<{
 	};
 
 	return (
-		<div className="rounded-lg border border-gray-200 bg-white p-8">
+		<div
+			id="donation"
+			className="rounded-lg border border-gray-200 bg-white p-8"
+		>
 			<div className="grid gap-8 md:grid-cols-3">
 				{/* Form */}
 				<div className="md:col-span-1">
@@ -100,7 +147,9 @@ export const DonationForm: React.FC<{
 								))}
 							</select>
 							{errors.bankCode && (
-								<p className="mt-1 text-sm text-red-500">{errors.bankCode.message}</p>
+								<p className="mt-1 text-sm text-red-500">
+									{errors.bankCode.message}
+								</p>
 							)}
 						</div>
 
@@ -170,7 +219,9 @@ export const DonationForm: React.FC<{
 								}`}
 							/>
 							{errors.yourName && (
-								<p className="mt-1 text-sm text-red-500">{errors.yourName.message}</p>
+								<p className="mt-1 text-sm text-red-500">
+									{errors.yourName.message}
+								</p>
 							)}
 						</div>
 
@@ -198,7 +249,9 @@ export const DonationForm: React.FC<{
 								/>
 							</div>
 							{errors.amount && (
-								<p className="mt-1 text-sm text-red-500">{errors.amount.message}</p>
+								<p className="mt-1 text-sm text-red-500">
+									{errors.amount.message}
+								</p>
 							)}
 						</div>
 
@@ -207,9 +260,11 @@ export const DonationForm: React.FC<{
 							<button
 								type="submit"
 								disabled={isGeneratingQR}
-								className="flex-1 rounded-lg w-full bg-green-600 px-4 py-2 font-semibold text-white transition-colors hover:bg-green-700 disabled:bg-gray-400"
+								className="cursor-pointer flex-1 rounded-lg w-full bg-green-600 px-4 py-2 font-semibold text-white transition-colors hover:bg-green-700 disabled:bg-gray-400"
 							>
-								{isGeneratingQR ? t("donation.generating") : t("donation.generateQr")}
+								{isGeneratingQR
+									? t("donation.generating")
+									: t("donation.generateQr")}
 							</button>
 						</div>
 					</form>
